@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Rectangle.h"
+#include "ParticleSystem.h"
 
 class Weapon : public Rectangle
 {
@@ -17,4 +18,6 @@ public:
 private:
     bool m_isActive = false;
     float m_timer = 0.0f;
+
+    ParticleSystem m_particleSystem;
 };

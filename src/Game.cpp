@@ -137,6 +137,8 @@ void Game::draw(sf::RenderTarget &target, sf::RenderStates states) const
     {
         temp->draw(target, states);
     }
+
+    
 }
 
 
