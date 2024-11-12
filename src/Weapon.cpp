@@ -19,7 +19,6 @@ void Weapon::setActive(bool isActive)
         setSize(sf::Vector2f(WeaponWidth, WeaponHeight));
         
         m_particleSystem.sprayParticles(50, this->getPosition()); // fix
-        m_particleSystem.update(50.0f, this->getPosition());
         m_timer = WeaponActiveTime;
     }
     else
@@ -34,6 +33,7 @@ void Weapon::update(float deltaTime)
     if (m_isActive)
     {
         m_timer -= deltaTime;
+        m_particleSystem.update(50.0f, this->getPosition());
         if (m_timer <= 0.0f)
         {
             setActive(false);

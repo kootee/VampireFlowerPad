@@ -14,11 +14,8 @@ public:
     
     void update(float deltaTime);
 
-    void setIsKilled(bool isKilled) { m_isKilled = isKilled; } // not killed, turned into a flower
-    bool isKilled() { return m_isKilled; } // not killed, turned into a flower
-
-    // get hit by water
-    void getWatered();
+    void setIsKilled(bool isKilled) { m_isKilled = isKilled; } 
+    bool isKilled() { return m_isKilled; }
 
 private:
     Game* m_pGame;

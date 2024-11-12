@@ -4,6 +4,7 @@
 #include "Weapon.h"
 #include "Player.h"
 #include "MathUtils.h"
+#include <iostream>
 
 Vampire::Vampire(Game* game, sf::Vector2f position) :
     Rectangle(sf::Vector2f(VampireWidth, VampireHeight)),
@@ -24,9 +25,11 @@ void Vampire::update(float deltaTime)
     
     Player* pPlayer = m_pGame->getPlayer();
 
-    if (collidesWith(pPlayer->getWeapon()))
+    if (pPlayer->getWeapon()->m_particleSystem.particleCollision(*this))
     {
-        setIsKilled(true);
+        m_dropCounter++;
+        if (m_dropCounter >= vampireWaterLimit)
+            setIsKilled(true);
         return;
     }
 
@@ -40,9 +43,3 @@ void Vampire::update(float deltaTime)
     m_sprite.setPosition(getPosition());
 }
 
-void Vampire::getWatered()
-{
-    // if gets hit by a blue pixel, increase the counter
-    if (m_dropCounter >= vampireWaterLimit)
-        setIsKilled(true);
-}

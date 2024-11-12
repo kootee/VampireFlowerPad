@@ -15,9 +15,9 @@ public:
 
     virtual void draw(sf::RenderTarget& target, sf::RenderStates states) const override;
 
+    ParticleSystem m_particleSystem;
 private:
     bool m_isActive = false;
     float m_timer = 0.0f;
 
-    ParticleSystem m_particleSystem;
 };

@@ -12,7 +12,7 @@ int main(int argc, char* argv[])
     // ResourceManager Must be Instantiated here -- DO NOT CHANGE
     ResourceManager::init(argv[0]);
 
-    sf::RenderWindow window(sf::VideoMode(ScreenWidth, ScreenHeight), "My beautiful flower garden");
+    sf::RenderWindow window(sf::VideoMode(ScreenWidth, ScreenHeight), "My beautiful flower garden is invaded by Vampires!");
     window.setKeyRepeatEnabled(false);
     
     std::unique_ptr<Game> pGame = std::make_unique<Game>();
@@ -51,8 +51,7 @@ int main(int argc, char* argv[])
         clock.restart();
         pGame->update(elapsedTime.asSeconds());
         
-        // clear the window with black color
-        window.clear(sf::Color::Black);
+        window.clear(sf::Color(34, 139, 34));
         
         window.draw(*pGame.get());
         

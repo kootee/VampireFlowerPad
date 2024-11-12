@@ -45,6 +45,11 @@ bool Game::initialise()
         std::cerr << "Unable to load texture" << std::endl;
         return false;
     }
+    if (!m_flowerTexture.loadFromFile(ResourceManager::getFilePath("flowerVampire.png")))
+    {
+        std::cerr << "Unable to load texture" << std::endl;
+        return false;
+    }
 
     resetLevel();
     return true;
@@ -97,6 +102,7 @@ void Game::update(float deltaTime)
     {
         if (m_pVampires[i]->isKilled())
         {
+            m_flowerPositions.push_back(m_pVampires[i]->getCenter());
             std::swap(m_pVampires[i], m_pVampires.back());
             m_pVampires.pop_back();
             continue;
@@ -138,7 +144,13 @@ void Game::draw(sf::RenderTarget &target, sf::RenderStates states) const
         temp->draw(target, states);
     }
 
-    
+    sf::Sprite flowerSprite(m_flowerTexture);
+    flowerSprite.scale(2.0f, 2.0f);
+    for (const auto& position : m_flowerPositions)
+    {
+        flowerSprite.setPosition(position);
+        target.draw(flowerSprite);
+    }
 }
 
 

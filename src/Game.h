@@ -55,8 +55,11 @@ private:
     float m_nextVampireCooldown = 2.0f;
     int m_spawnCount = 0;
     
+    std::vector<sf::Vector2f> m_flowerPositions;
+
     sf::Font m_font;
     sf::Texture m_vampTexture;
     sf::Texture m_playerTexture;
+    sf::Texture m_flowerTexture;
     // add flower and grass textures?
 };
